@@ -294,6 +294,7 @@
 				DEVELOPMENT_TEAM = 46NZ24MGAL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelBook/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Kullanacaz gardaş";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -322,6 +323,7 @@
 				DEVELOPMENT_TEAM = 46NZ24MGAL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelBook/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Kullanacaz gardaş";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
