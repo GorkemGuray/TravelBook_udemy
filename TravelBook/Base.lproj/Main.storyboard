@@ -17,27 +17,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoC-x0-OtI">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Uta-4s-6Ix">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
-                            </mapView>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0m-bf-CRw">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4qI-n1-glY">
+                                        <rect key="frame" x="0.0" y="78" width="393" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoC-x0-OtI">
+                                        <rect key="frame" x="0.0" y="136" width="393" height="623"/>
+                                        <standardMapConfiguration key="preferredConfiguration"/>
+                                    </mapView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4qI-n1-glY" secondAttribute="trailing" constant="5" id="4mc-5m-w8d"/>
+                                    <constraint firstItem="4qI-n1-glY" firstAttribute="leading" secondItem="Uta-4s-6Ix" secondAttribute="leading" constant="5" id="IpJ-cG-iTF"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HoC-x0-OtI" secondAttribute="bottom" id="UW1-v4-f1R"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HoC-x0-OtI" secondAttribute="trailing" id="dmS-9l-JY0"/>
-                            <constraint firstItem="HoC-x0-OtI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="emK-NG-2LP"/>
-                            <constraint firstItem="HoC-x0-OtI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mSa-zv-Vm0"/>
+                            <constraint firstItem="Uta-4s-6Ix" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2D1-lQ-3Dk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uta-4s-6Ix" secondAttribute="trailing" id="b4b-iB-ypH"/>
+                            <constraint firstItem="Uta-4s-6Ix" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e8c-B8-nuR"/>
+                            <constraint firstItem="Uta-4s-6Ix" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sDO-fe-zc5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentText" destination="4qI-n1-glY" id="INV-xq-8wQ"/>
+                        <outlet property="mainText" destination="A0m-bf-CRw" id="zPz-Vt-kLe"/>
                         <outlet property="mapView" destination="HoC-x0-OtI" id="HYp-Y8-cYF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-27"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

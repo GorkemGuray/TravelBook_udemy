@@ -11,6 +11,8 @@ import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var commentText: UITextField!
+    @IBOutlet weak var mainText: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     //Core location manager
     var locationManager = CLLocationManager()
@@ -32,6 +34,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //kullanıcının konumu alınmaya başlanıyor.
         locationManager.startUpdatingLocation()
         
+        //kullanıcı, harita üstüne uzun basarak pin koyabilmesi için gesture oluşturduk.
+        //selector fonksiyonumuzda UILongPressGestureRecognizer'ı gönderdik ki işlmeler yapabilelim
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(chooseLocation(gestureRecognizer: )))
+        //long press'in süresini belirledik.
+        gestureRecognizer.minimumPressDuration = 2
+        //gesture'ı mapView'e ekledik.
+        mapView.addGestureRecognizer(gestureRecognizer)
         
     }
     
@@ -43,7 +52,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
         
         //zoomlama seviyesi
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         
         //setRegion yapabilmek için oluşturmalıyız.
         //bizden merkez nokta (center) ve zoom seviyesi istemekte (span)
@@ -52,6 +61,28 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //map'imizde bir noktayı açmak istiyoruz
         //bizden region istemekte.
         mapView.setRegion(region, animated: true)
+        
+    }
+    
+    @objc func chooseLocation(gestureRecognizer: UILongPressGestureRecognizer) {
+        //dokunma eylemi başladı mı?
+        if gestureRecognizer.state == .began {
+            
+            //dokunulan noktayı alır
+            let touchPoint = gestureRecognizer.location(in: self.mapView)
+            //alınan bu noktayı koordinat haline getirir.
+            let touchedCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+            
+            //harita üzerine konulacak pin oluşturuluyor.
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = touchedCoordinates
+            annotation.title = mainText.text
+            annotation.subtitle = commentText.text
+            //oluşturulan pin haritaya ekleniyor.
+            self.mapView.addAnnotation(annotation)
+            
+        }
+        
         
     }
 
